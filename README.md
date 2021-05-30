@@ -15,11 +15,11 @@ A clone of the sleep tracker application from Udacity Lessons
 * [Backing Properties ][5]- protects MutableLiveData
 * [Observable state LiveData][5] variables to trigger navigation
 
-### Screenshots
-|<img src="screenshots/1.png" width=200/>|
-|:--:|
 [1]: https://www.udacity.com/course/???
 [2]: https//www.source
 [3]: https//www.source
 [4]: https//www.source
 [5]: https//www.source
+### Screenshots
+|<img src="screenshots/1.png" width=200/>|
+|:--:|
