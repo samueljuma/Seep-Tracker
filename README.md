@@ -1,8 +1,7 @@
 # Seep-Tracker
 A clone of the sleep tracker application from Udacity Lessons
 
->> This is the toy app for lesson 6 of the
->> [Android App Development in Kotlin course][1] on Udacity
+>> This is the toy app for lesson 6 of the [Android App Development in Kotlin course][1] on Udacity
 * The SleepQualityTracker app is a demo app that helps you collect information about your sleep.
     - Start time, end time, quality, and time slept
 ### Tech Stack and Utilities
