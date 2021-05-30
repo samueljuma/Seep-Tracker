@@ -6,7 +6,7 @@ A clone of the sleep tracker application from Udacity Lessons
     - Start time, end time, quality, and time slept
 ### Tech Stack and Utilities
 * [Room database][2]
-* [DAO] [3]
+* [DAO][3]
 * [Coroutines][4]
 * [Transformation map][5]
 * [Data Binding][5] in XML files
