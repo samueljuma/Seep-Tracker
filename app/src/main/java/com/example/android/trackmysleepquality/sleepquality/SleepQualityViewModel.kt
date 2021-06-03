@@ -35,6 +35,7 @@ class SleepQualityViewModel(private val sleepNightKey: Long = 0L,
         }
     }
 
+
     //
     override fun onCleared() {
         super.onCleared()

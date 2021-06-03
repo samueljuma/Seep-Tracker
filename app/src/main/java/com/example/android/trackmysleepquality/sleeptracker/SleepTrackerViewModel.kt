@@ -57,6 +57,17 @@ class SleepTrackerViewModel(val database: SleepDatabaseDao, application: Applica
                 _navigateToSleepQuality.value = null
         }
 
+        // button visibility using transformations.map
+        val startButtonVisible = Transformations.map(tonight) {
+                null == it
+        }
+        val stopButtonVisible = Transformations.map(tonight) {
+                null != it
+        }
+        val clearButtonVisible = Transformations.map(nights) {
+                it?.isNotEmpty()
+        }
+
         init {
             initializeTonight()
         }
