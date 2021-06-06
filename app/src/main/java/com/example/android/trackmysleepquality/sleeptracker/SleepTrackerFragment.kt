@@ -29,6 +29,7 @@ import com.example.android.trackmysleepquality.R
 import com.example.android.trackmysleepquality.database.SleepDatabase
 import com.example.android.trackmysleepquality.databinding.FragmentSleepTrackerBinding
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.fragment_sleep_tracker.*
 
 /**
  * A fragment with buttons to record start and end times for sleep, which are saved in
@@ -64,6 +65,15 @@ class SleepTrackerFragment : Fragment() {
 
         // get the viewModel from layout binding
         binding.sleepTrackerViewModel = sleepTrackerViewModel
+
+        //adapter
+        val adapter = SleepNightAdapter()
+        binding.sleepList.adapter = adapter
+        sleepTrackerViewModel.nights.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.data =it
+            }
+        })
 
         // set lifecycle owner so that binding can observe livedata updates
         binding.lifecycleOwner = this
