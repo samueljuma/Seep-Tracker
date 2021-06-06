@@ -59,6 +59,9 @@ dependencies {
     // Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:$version_room"
 
+    //RecyclerView
+    implementation"androidx.recyclerview:recyclerview:1.2.1"
+
 
     // Testing
     testImplementation 'junit:junit:4.12'
