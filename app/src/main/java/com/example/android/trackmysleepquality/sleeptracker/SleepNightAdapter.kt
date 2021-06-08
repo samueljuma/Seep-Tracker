@@ -50,3 +50,6 @@ class SleepNightAdapter: ListAdapter<SleepNight, SleepNightAdapter.ViewHolder>(S
         }
     }
 }
+class SleepNightLister (val clickListener: (sleepId: Long) -> Unit){
+    fun onClick(night: SleepNight) = clickListener(night.nightID)
+}
