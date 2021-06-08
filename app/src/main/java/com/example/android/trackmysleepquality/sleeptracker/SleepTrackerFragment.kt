@@ -30,6 +30,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.android.trackmysleepquality.R
 import com.example.android.trackmysleepquality.database.SleepDatabase
 import com.example.android.trackmysleepquality.databinding.FragmentSleepTrackerBinding
+import com.example.android.trackmysleepquality.sleepdetail.SleepDetailFragmentDirections
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_sleep_tracker.*
 
@@ -74,7 +75,7 @@ class SleepTrackerFragment : Fragment() {
 
         //adapter
         val adapter = SleepNightAdapter(SleepNightListener {
-                nightID -> Toast.makeText(activity,"$nightID",Toast.LENGTH_SHORT).show()
+                nightId -> sleepTrackerViewModel.onSleepNightClicked(nightId)
         })
         binding.sleepList.adapter = adapter
         sleepTrackerViewModel.nights.observe(viewLifecycleOwner, Observer {
@@ -86,12 +87,25 @@ class SleepTrackerFragment : Fragment() {
         // set lifecycle owner so that binding can observe livedata updates
         binding.lifecycleOwner = this
 
+        /**
+         * NAVIGATION OBSERVERS
+         */
+
         sleepTrackerViewModel.navigateToSleepQuality.observe(viewLifecycleOwner, Observer { night ->
          night?.let {
              this.findNavController().navigate(SleepTrackerFragmentDirections
                  .actionSleepTrackerFragmentToSleepQualityFragment(night.nightID))
              sleepTrackerViewModel.doneNavigating()
          }
+        })
+
+        // navigation to SleepDataQuality observer
+        sleepTrackerViewModel.navigateToSleepDataQuality.observe(viewLifecycleOwner, Observer { night->
+            night?.let {
+                this.findNavController().navigate(SleepTrackerFragmentDirections
+                    .actionSleepTrackerFragmentToSleepDetailFragment(night))
+            sleepTrackerViewModel.onSleepDataQualityNavigated()
+            }
         })
 
         // snackBar event observer
@@ -102,6 +116,7 @@ class SleepTrackerFragment : Fragment() {
                 sleepTrackerViewModel.doneDisplayingSnackBar()
             }
         })
+
 
 
         return binding.root

@@ -66,7 +66,23 @@ class SleepTrackerViewModel(val database: SleepDatabaseDao, application: Applica
                 _snackBarEvent.value =false
         }
 
-        // button visibility using transformations.map
+        /**
+         *
+         */
+        private val _navigateToSleepDataQuality = MutableLiveData<Long>()
+        val navigateToSleepDataQuality
+                get() = _navigateToSleepDataQuality
+        fun onSleepNightClicked(Id: Long) {
+                _navigateToSleepDataQuality.value = Id
+        }
+        fun onSleepDataQualityNavigated(){
+                _navigateToSleepDataQuality.value =null
+        }
+
+
+        /**
+         *  button visibility using transformations.map
+         */
         val startButtonVisible = Transformations.map(tonight) {
                 null == it
         }
@@ -147,6 +163,8 @@ class SleepTrackerViewModel(val database: SleepDatabaseDao, application: Applica
                         database.clear()
                 }
         }
+
+
 
 }
 
